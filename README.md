@@ -1,42 +1,44 @@
 # koda-youtube-scripting
 
-**YouTube 口播逐字稿写作 Agent Skill：访谈硬门禁 + 非虚构故事框架 + 罗振宇叙事引擎 + 情绪设计**
+**YouTube 口播逐字稿写作 Agent Skill：因果链输入 + 非虚构故事框架 + 罗振宇叙事引擎 + 情绪设计**
 
-An agent skill for writing 8-15 minute YouTube talking-head scripts (Chinese). Core idea: the AI interviews the creator first to extract their own judgments, then builds structure and drafts — the AI is the interviewer and craftsman, never the opinion supplier.
+An agent skill for writing 8-15 minute YouTube talking-head scripts (Chinese). Core idea: the creator supplies the causal chain (the "why"); the AI does storyization only (the "how") — scenes, conflict, emotion. Opinions are never outsourced.
 
 ## 为什么做这个 skill
 
 用 AI 写口播稿最常见的失败：稿子很顺，但观点是 AI 的，不是你的。改十版都不满意，因为根子上写的是别人的稿。
 
-这个 skill 把流程倒过来：
+这个 skill 把分工定死：**创作者管"为什么"（观点与因果），AI 管"怎么讲"（故事、冲突、情绪）**：
 
-1. **先访谈，后写稿（硬门禁）**——选题定了，AI 必须先用六个方向的问题挖你本人的观察、判断、反常识点，你确认纪要后才允许动笔
-2. **范本先行**——动笔前按题材通读一篇同题材的叙事范本找语感，范本永远优先于模板表格
-3. **故事就是论证**——叙事层内置从罗辑思维 1261 期公开节目逐字稿蒸馏的"递进否定"故事引擎：立错误答案 → 完整故事拆掉 → 论点后置短句砸
-4. **情绪是骨架不是装修**——骨架阶段就排情绪温度（暖→稳→掀→沉→清→轻收），不留到润色
+1. **因果链是创作者的输入件（硬规则）**——创作者先给这期内容的因果链（因为…所以…但是…因此…），AI 按链做故事化施工，不许改链、不许自造链
+2. **事实先行**——写作只许用材料包里登记过的事实，每个数字有溯源表，没有来源就不进稿
+3. **范本先行**——动笔前按题材通读一篇同题材叙事范本找语感，范本永远优先于模板表格
+4. **故事就是论证**——叙事层内置从罗辑思维 1261 期公开节目逐字稿蒸馏的"递进否定"故事引擎：立错误答案 → 完整故事拆掉 → 论点后置短句砸
+5. **情绪是骨架不是装修**——故事线阶段就排情绪温度（暖→稳→掀→沉→清→轻收），不留到润色
 
 ## 流水线
 
 ```
 step01 选题确认（观众判定 / 利益落点 / 素材盘点）
    ↓
-step02 访谈创作者 ★硬门禁：未确认不许写★
+step02 事实与材料（素材清单 / 数字溯源表 / 缺口清单）
    ↓
-step03 结构与包装（payoff 前置 / 反转链 + 删层测试 / 情绪规划 / 3 组标题封面）
+step03 故事线设计 ★创作者给因果链，AI 只故事化★
+       （Scene 选点 / 冲突 / 情绪温度 / 删层测试 / 3 组标题封面）
    ↓
-step04 写稿（范本通读 → 结构标注版草稿，时间戳与字数自洽）
+step04 写作（范本通读 → 结构标注版草稿，时间戳与字数自洽）
    ↓
-step05 自检交付（禁词机检 / 流失点三维 / 30 秒测试 / 访谈对账 / 叙事评分卡）
+step05 自检交付（禁词机检 / 流失点三维 / 30 秒测试 / 因果链对账 / 叙事评分卡）
 ```
 
 ## 文件结构
 
 ```
-SKILL.md                        入口：铁律 + 工作流 + 执行规范
+SKILL.md                        入口：流程总纲 + 两条铁律 + 执行规范
 workflow/
   step01-topic.md               选题确认
-  step02-interview.md           访谈（六方向问题库 + 交互规则 + 门禁）
-  step03-structure.md           结构与包装
+  step02-materials.md           事实与材料
+  step03-structure.md           故事线设计（含判断挖掘问题库附录）
   step04-draft.md               写稿规则
   step05-check.md               检查链
 reference/
